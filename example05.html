@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset = utf8>
+<html>
+    
+    <head>
+        <title> Example with buttons </title>
+        </head>
+        
+        <body>
+            <p style="text-align:center">
+            <button  style="height:200px; width:200px"; id="buttonOn1" onclick="on1()">On 1</button>
+            <button  style="height:200px; width:200px";id="buttonOff1" onclick="off1()">Off 1</button>
+            <br>
+            <button  style="height:200px; width:200px"; id="buttonOn2" onclick="on2()">On 2</button>
+            <button  style="height:200px; width:200px";id="buttonOff2" onclick="off2()">Off 2</button>
+            
+            <br>
+            
+            <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+            
+            <script type="text/javascript">
+            
+            var socket = io.connect("172.16.22.48:8080"); // connect via socket
+            
+            function on1 () {
+                
+                socket.emit("CommandToArduino", 1);
+            }
+             function off1 () {
+                
+                socket.emit("CommandToArduino", 0);
+            }
+                        
+                        function on2 () {
+                
+                socket.emit("CommandToArduino", 3);
+            }
+             function off2 () {
+                
+                socket.emit("CommandToArduino", 2);
+            }
+            
+            
+            
+            </script>
+            
+            </body>
+        
+        </html>
